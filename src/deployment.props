@@ -1,0 +1,8 @@
+//anapplicationName=WebSiteGrabber
+smid=WebSiteGrabberService
+adapter=com.cognitiveedge.collector.WebSiteGrabberAdapter
+handler=com.cognitiveedge.collector.WebSiteGrabberHandler
+coginitiveEdgeNodeLocalDir=/home/bayon/dbe/servent-0.3.14/deploy/core-webapps/webapps/cache/cognitive-edge/
+cogitiveEdgeNodeURL=http://192.168.1.103:2728/cache/cognitive-edge/
+cmdpath=/home/bayon/screenGrab.sh
+maxNumOfThreads=20
