@@ -46,6 +46,7 @@ public class DownloadMimeTypeManager extends MimeTypeManager
     @Override
     protected List<String> getSupportedMimeTypes()
     {
+        // TODO: This is not the correct way of doing this, this should be configurable through the application settings
         return new List<String>(new String[]{
                 MimeType.IMAGE_ICON().getValue(),
                 MimeType.IMAGE_GIF().getValue(),
@@ -62,6 +63,10 @@ public class DownloadMimeTypeManager extends MimeTypeManager
                 MimeType.APPLICATION_PDF().getValue(),
                 MimeType.APPLICATION_OCTET_STREAM().getValue(),
                 MimeType.AUDIO_X_WAV().getValue(),
+                MimeType.AUDIO_MP4().getValue(),
+                MimeType.AUDIO_MPEG().getValue(),
+                MimeType.AUDIO_OGG().getValue(),
+                MimeType.AUDIO_WAV().getValue(),
                 MimeType.TEXT_CACHE_MANIFEST().getValue()
         });
     }

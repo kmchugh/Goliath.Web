@@ -58,7 +58,7 @@ public class JSMimeTypeManager extends MimeTypeManager
     }
     
     @Override
-    protected MimeType getMimeType(Goliath.IO.File toFile, IHTTPResponse toResponse)
+    public MimeType getMimeType(Goliath.IO.File toFile, IHTTPResponse toResponse)
     {
         return MimeType.TEXT_JAVASCRIPT();
     }

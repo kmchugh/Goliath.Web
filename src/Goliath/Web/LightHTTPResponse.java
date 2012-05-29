@@ -648,13 +648,13 @@ public class LightHTTPResponse extends Goliath.Object
 
             // TODO : Implement full headers properly
 
-            if (m_nResultLength == 0 || keepAlive())
+            if (keepAlive() && m_nResultLength == 0)
             {
                 this.setResponseHeaders("Transfer-Encoding", "chunked");
             }
             else
             {
-                this.setResponseHeaders("Content-Length", keepAlive() ? "0" : Long.toString(m_nResultLength));
+                this.setResponseHeaders("Content-Length", Long.toString(m_nResultLength >=0 ? m_nResultLength : 0));
             }
             
             this.setResponseHeaders("Connection", keepAlive() ? "Keep-Alive" : "close");

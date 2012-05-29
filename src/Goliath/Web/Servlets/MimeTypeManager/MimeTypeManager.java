@@ -29,9 +29,6 @@ import Goliath.SingletonHandler;
 import Goliath.Web.Constants.ResultCode;
 import Goliath.Web.Server;
 import java.io.File;
-import java.io.FileInputStream;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
 
 /**
  * The MimeTypeManager is a singleton class which handles the response for requests
@@ -175,9 +172,10 @@ public class MimeTypeManager extends Goliath.Object
     /**
      * Gets the type that this manager is serving to the client based on the file that is being processed
      * @param toFile the file that is going to be sent to the client
+     * @param toResponse the response object which can be used to determine the type to return
      * @return the mime type to specify for the file
      */
-    protected MimeType getMimeType(Goliath.IO.File toFile, IHTTPResponse toResponse)
+    public MimeType getMimeType(Goliath.IO.File toFile, IHTTPResponse toResponse)
     {
         return MimeType.getEnumeration(MimeType.class, getMimeType(toFile.getName()));
     }
@@ -527,8 +525,15 @@ public class MimeTypeManager extends Goliath.Object
                 m_oFileMap.put("(?i)\\.gsp$", MimeType.APPLICATION_GOLIATH_SERVER_PAGE().getValue());
                 m_oFileMap.put("(?i)\\.appcache$", MimeType.TEXT_CACHE_MANIFEST().getValue());
                 m_oFileMap.put("(?i)\\.less$", MimeType.TEXT_CSS_LESS().getValue());
-
-
+                m_oFileMap.put("(?i)\\.mp3", MimeType.AUDIO_MPEG().getValue());
+                m_oFileMap.put("(?i)\\.m4a", MimeType.AUDIO_MP4().getValue());
+                m_oFileMap.put("(?i)\\.og[g|a]", MimeType.AUDIO_OGG().getValue());
+                m_oFileMap.put("(?i)\\.webma", MimeType.AUDIO_WEBM().getValue());
+                m_oFileMap.put("(?i)\\.wav|\\.pcm", MimeType.AUDIO_WAV().getValue());
+                m_oFileMap.put("(?i)\\.mp4|\\.m4v", MimeType.VIDEO_MP4().getValue());
+                m_oFileMap.put("(?i)\\.ogv", MimeType.VIDEO_OGG().getValue());
+                m_oFileMap.put("(?i)\\.webmv?", MimeType.VIDEO_WEBM().getValue());
+                
                 /*
                 323 	text/h323
                 acx 	application/internet-property-stream
@@ -605,11 +610,8 @@ public class MimeTypeManager extends Goliath.Object
                 mhtml 	message/rfc822
                 mid 	audio/mid
                 mny 	application/x-msmoney
-                mov 	video/quicktime
                 movie 	video/x-sgi-movie
                 mp2 	video/mpeg
-                mp3 	audio/mpeg
-                mpa 	video/mpeg
                 mpe 	video/mpeg
                 mpeg 	video/mpeg
                 mpg 	video/mpeg
@@ -686,7 +688,6 @@ public class MimeTypeManager extends Goliath.Object
                 ustar 	application/x-ustar
                 vcf 	text/x-vcard
                 vrml 	x-world/x-vrml
-                wav 	audio/x-wav
                 wcm 	application/vnd.ms-works
                 wdb 	application/vnd.ms-works
                 wks 	application/vnd.ms-works

@@ -116,7 +116,7 @@ public class GSPMimeTypeManager extends MimeTypeManager
      * @return the mime type to specify for the file
      */
     @Override
-    protected MimeType getMimeType(Goliath.IO.File toFile, IHTTPResponse toResponse)
+    public MimeType getMimeType(Goliath.IO.File toFile, IHTTPResponse toResponse)
     {
         return MimeType.TEXT_HTML();
     }
